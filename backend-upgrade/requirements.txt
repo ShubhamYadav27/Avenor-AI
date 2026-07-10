@@ -1,0 +1,52 @@
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9
+
+# Database
+sqlalchemy==2.0.30
+alembic==1.13.1
+psycopg2-binary==2.9.9
+pgvector==0.2.5
+
+# Task queue
+celery==5.4.0
+redis==5.0.6
+
+# AI
+openai==1.35.3
+
+# Data & validation
+pydantic==2.7.3
+pydantic-settings==2.3.1
+python-dateutil==2.9.0
+rapidfuzz==3.9.3
+
+# HTTP client
+httpx==0.27.0
+
+# Auth
+PyJWT==2.8.0
+passlib[bcrypt]==1.7.4
+
+# Observability
+sentry-sdk[fastapi]==2.5.1
+# logfire[fastapi]==0.46.1  # optional — add when deploying to Railway/Render
+
+# Utilities
+python-dotenv==1.0.1
+tenacity==8.3.0
+structlog==24.2.0
+
+# Testing
+pytest==8.2.2
+pytest-asyncio==0.23.7
+pytest-cov==5.0.0
+httpx==0.27.0
+factory-boy==3.3.0
+
+# Dev
+ruff==0.4.9
+
+# Phase 4.2 additions
+cryptography==42.0.8
