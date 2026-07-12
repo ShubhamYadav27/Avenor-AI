@@ -1,4 +1,4 @@
-# Avenor Dashboard — Customer Intelligence Frontend
+# Avenor — Customer Intelligence Frontend
 
 Next.js 16 frontend for the Avenor Predictive Revenue Intelligence platform.
 Connects to the Phase 4.1/4.2 FastAPI backend.
