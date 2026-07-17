@@ -79,7 +79,11 @@ class HubSpotClient:
 
     def _refresh_token(self) -> None:
         """Exchange refresh token for new access + refresh tokens."""
-        logger.info("refreshing_hubspot_token", workspace_id=str(self.conn.workspace_id))
+        logger.info(
+            "refreshing_hubspot_token",
+            workspace_id=str(self.conn.workspace_id),
+        )
+
         try:
             resp = httpx.post(
                 HUBSPOT_TOKEN_URL,
@@ -87,7 +91,9 @@ class HubSpotClient:
                     "grant_type": "refresh_token",
                     "client_id": settings.HUBSPOT_APP_CLIENT_ID,
                     "client_secret": settings.HUBSPOT_APP_CLIENT_SECRET,
-                    "refresh_token": decrypt_token(self.conn.refresh_token_encrypted),
+                    "refresh_token": decrypt_token(
+                        self.conn.refresh_token_encrypted
+                    ),
                 },
                 timeout=15,
             )
@@ -100,19 +106,36 @@ class HubSpotClient:
                 seconds=data.get("expires_in", 1800)
             )
             self.db.commit()
-            logger.info("token_refreshed", workspace_id=str(self.conn.workspace_id))
+
+            logger.info(
+                "token_refreshed",
+                workspace_id=str(self.conn.workspace_id),
+            )
 
         except httpx.HTTPStatusError as e:
-            # 401 on refresh = token permanently invalid
+            print("========== HUBSPOT REFRESH ERROR ==========")
+            print(e.response.status_code)
+            print(e.response.text)
+            print("===========================================")
+
+            logger.error(
+                "hubspot_refresh_failed",
+                status=e.response.status_code,
+                body=e.response.text,
+            )
+
             if e.response.status_code in (401, 403):
                 self.conn.is_active = False
-                self.conn.sync_error = "Refresh token revoked — user must reconnect HubSpot"
+                self.conn.sync_error = e.response.text
                 self.db.commit()
-            raise ExternalServiceError(
-                "HubSpot", f"Token refresh failed: {e.response.status_code}"
-            ) from e
+
+            raise
+
         except Exception as e:
-            raise ExternalServiceError("HubSpot", f"Token refresh error: {e}") from e
+            raise ExternalServiceError(
+                "HubSpot",
+                f"Token refresh error: {e}",
+            ) from e
 
     # ── HTTP helpers ─────────────────────────────────────────
 

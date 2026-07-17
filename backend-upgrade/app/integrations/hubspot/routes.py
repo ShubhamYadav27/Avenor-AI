@@ -480,8 +480,8 @@ def _verify_signature_v1(body: bytes, signature: str) -> bool:
 # ── HubSpot API helpers ────────────────────────────────────────
 
 def _redirect_uri() -> str:
-    base = settings.ALLOWED_ORIGINS.split(",")[0].strip()
-    return f"{base}/api/v1/integrations/hubspot/callback"
+    return settings.HUBSPOT_REDIRECT_URI
+    
 
 
 def _get_hub_info(access_token: str) -> tuple[str, str]:
