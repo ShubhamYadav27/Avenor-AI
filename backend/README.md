@@ -4,7 +4,7 @@
 
 Avenor is an AI-powered B2B revenue intelligence platform. It monitors companies for buying signals, scores them against your ICP, generates Account Intelligence Feeds, and learns from win/loss outcomes to improve predictions over time.
 
-This repository is **Phase 4.1: Intelligence Backend** — the FastAPI modular monolith that powers the entire platform.
+This repository is **Phase 4.1: Intelligence Backend**
 
 ---
 
