@@ -1,12 +1,10 @@
-# Avenor — Predictive Revenue Intelligence
+# Avenor — Predictive Revenue Intelligence Backend-Upgrade
 
 > Know who is about to buy, why, and what to say — before any competitor does.
 
-Avenor is a self-improving B2B revenue intelligence platform. It monitors companies
-for buying signals, scores them against your ICP, surfaces an Account Intelligence
-Feed, connects to your CRM, and learns from every win and loss to improve predictions.
+Avenor is a self-improving B2B revenue intelligence platform. It monitors companies for buying signals, scores them against your ICP, surfaces an AccounT Intelligence Feed, connects to your CRM, and learns from every win and loss to improve predictions.
 
-**Current version:** v0.2-crm (Phase 4.2 complete)
+This repository is **Phase 4.2 — CRM Intelligence & Feedback Loop**
 
 ---
 
