@@ -4,7 +4,7 @@
 
 Avenor is an AI-powered B2B revenue intelligence platform. It monitors companies for buying signals, scores them against your ICP, generates Account Intelligence Feeds, and learns from win/loss outcomes to improve predictions over time.
 
-This repository is **Phase 4.1: Intelligence Backend**
+This repository is **Initial: Intelligence Backend**
 
 ---
 
@@ -52,7 +52,7 @@ This repository is **Phase 4.1: Intelligence Backend**
 │  /icp · /auth · /integrations/hubspot              │
 └────────────────────┬────────────────────────────────┘
                      │
-              Next.js Dashboard (Phase 4.3)
+              Next.js Dashboard 
 ```
 
 **Design decisions:**
@@ -432,7 +432,7 @@ run_full_pipeline_for_workspace.delay('<workspace_id>')
 
 **Token encryption:** The HubSpot token encryption in MVP uses a simple XOR cipher for speed of implementation. Before handling real customer OAuth tokens in production, replace `_encrypt`/`_decrypt` in `app/integrations/hubspot/routes.py` with Python's `cryptography.fernet.Fernet`.
 
-**No LinkedIn integration:** LinkedIn automation is excluded from Phase 4.1. The outreach module (`app/modules/outreach/`) is a stub — the automation layer built in Phase 0 (Nexus) can be ported here in Phase 4.2.
+**No LinkedIn integration:** LinkedIn automation is excluded from Initial. The outreach module (`app/modules/outreach/`) is a stub — the automation layer built in (Nexus) can be ported here in Upgrade.
 
 **SQLite not supported:** The application uses Postgres-specific types (JSONB, pgvector, UUID). SQLite cannot be used as a drop-in replacement. Use the provided docker-compose for local development.
 
@@ -440,14 +440,14 @@ run_full_pipeline_for_workspace.delay('<workspace_id>')
 
 ---
 
-## What's Next (Phase 4.2 and 4.3)
+## What's Next (Backend Upgrade)
 
-**Phase 4.2 — HubSpot integration completion:**
+**HubSpot integration completion:**
 - Historical deal sync (90-day backfill on connection)
 - Salesforce integration
 - Two-way CRM sync (push Avenor scores into CRM as custom properties)
 
-**Phase 4.3 — Customer Dashboard:**
+**Customer Dashboard:**
 - Next.js frontend consuming these APIs
 - Account Intelligence Feed UI
 - Outcome logging workflow
