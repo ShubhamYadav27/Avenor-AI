@@ -1,0 +1,40 @@
+{
+  "uid": "Avenor_AI_app",
+  "type": "app",
+  "config": {
+    "description": "Avenor-AI helps revenue teams identify buying signals, prioritize accounts, and synchronize CRM data with AI-powered revenue intelligence.",
+    "name": "Avenor-AI-App",
+    "distribution": "private",
+    "auth": {
+      "type": "oauth",
+      "redirectUrls": [
+        "https://backend-45395119059.asia-south1.run.app/api/v1/integrations/hubspot/callback",
+        "http://localhost:8000/api/v1/integrations/hubspot/callback"
+      ],
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.contacts.read",
+        "crm.objects.contacts.write",
+        "crm.objects.companies.read",
+        "crm.objects.companies.write",
+        "crm.objects.deals.read",
+        "crm.objects.deals.write"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": [
+        "https://api.hubapi.com"
+      ],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@avenorai.in",
+      "documentationUrl": "https://avenorai.in",
+      "supportUrl": "https://avenorai.in",
+      "supportPhone": ""
+    }
+  }
+}

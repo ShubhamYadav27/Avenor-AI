@@ -1,0 +1,3 @@
+"""
+Copilot Context Providers Package
+"""

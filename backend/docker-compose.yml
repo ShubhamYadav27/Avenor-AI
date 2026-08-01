@@ -1,0 +1,87 @@
+version: "3.9"
+
+services:
+  # ── Postgres ────────────────────────────────────────────────
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: avenor_user
+      POSTGRES_PASSWORD: avenor_pass
+      POSTGRES_DB: avenor_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U avenor_user -d avenor_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ── Redis ────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ── API server ───────────────────────────────────────────────
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://avenor_user:avenor_pass@postgres:5432/avenor_db
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app   # hot reload in dev
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+
+  # ── Celery worker ────────────────────────────────────────────
+  worker:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://avenor_user:avenor_pass@postgres:5432/avenor_db
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    command: celery -A app.workers.celery_app worker --loglevel=info --queues=signals,scoring,intelligence,training,pipeline
+    restart: unless-stopped
+
+  # ── Celery beat scheduler ─────────────────────────────────────
+  beat:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://avenor_user:avenor_pass@postgres:5432/avenor_db
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    command: celery -A app.workers.celery_app beat --loglevel=info
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

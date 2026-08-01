@@ -1,0 +1,3 @@
+"""
+Copilot Registry Package
+"""

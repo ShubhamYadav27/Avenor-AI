@@ -1,0 +1,324 @@
+
+
+---CHUNK---
+
+from typing import List, Optional, Protocol
+from uuid import UUID
+
+from app.modules.enterprise_intelligence.domain.company_intelligence import CompanyIntelligence
+
+class CompanyIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Company Intelligence records.
+    """
+    async def get_by_id(self, tenant_id: UUID, intelligence_id: UUID) -> Optional[CompanyIntelligence]:
+        ...
+        
+    async def get_by_domain(self, tenant_id: UUID, domain: str) -> Optional[CompanyIntelligence]:
+        ...
+        
+    async def save(self, intelligence: CompanyIntelligence) -> CompanyIntelligence:
+        ...
+
+class CompanyIntelligenceProvider(Protocol):
+    """
+    Interface for external intelligence retrieval (Layer 3 providers).
+    """
+    async def fetch_company_data(self, domain: str) -> CompanyIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_company_data(self, domain: str) -> CompanyIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.contact_intelligence import ContactIntelligence
+
+class ContactIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Contact Intelligence records.
+    """
+    async def get_by_id(self, tenant_id: UUID, intelligence_id: UUID) -> Optional[ContactIntelligence]:
+        ...
+        
+    async def get_by_email(self, tenant_id: UUID, email: str) -> Optional[ContactIntelligence]:
+        ...
+        
+    async def save(self, intelligence: ContactIntelligence) -> ContactIntelligence:
+        ...
+
+class ContactIntelligenceProvider(Protocol):
+    """
+    Interface for external intelligence retrieval (Layer 3 providers) for contacts.
+    """
+    async def fetch_contact_data(self, email: str) -> ContactIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_contact_data(self, email: str) -> ContactIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.technology_intelligence import TechnologyIntelligence
+
+class TechnologyIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Technology Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[TechnologyIntelligence]:
+        ...
+        
+    async def save(self, intelligence: TechnologyIntelligence) -> TechnologyIntelligence:
+        ...
+
+class TechnologyIntelligenceProvider(Protocol):
+    """
+    Interface for external technology landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_technology_data(self, domain: str) -> TechnologyIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_technology_data(self, domain: str) -> TechnologyIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.buying_committee import BuyingCommitteeIntelligence
+
+class BuyingCommitteeRepository(Protocol):
+    """
+    Interface for persistence of Buying Committee Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[BuyingCommitteeIntelligence]:
+        ...
+        
+    async def save(self, intelligence: BuyingCommitteeIntelligence) -> BuyingCommitteeIntelligence:
+        ...
+
+class BuyingCommitteeProvider(Protocol):
+    """
+    Interface for external committee landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_committee_data(self, company_id: UUID) -> BuyingCommitteeIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_committee_data(self, company_id: UUID) -> BuyingCommitteeIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.funding_intelligence import FundingIntelligence
+
+class FundingIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Funding Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[FundingIntelligence]:
+        ...
+        
+    async def save(self, intelligence: FundingIntelligence) -> FundingIntelligence:
+        ...
+
+class FundingIntelligenceProvider(Protocol):
+    """
+    Interface for external funding landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_funding_data(self, domain: str) -> FundingIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_funding_data(self, domain: str) -> FundingIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.hiring_intelligence import HiringIntelligence
+
+class HiringIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Hiring Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[HiringIntelligence]:
+        ...
+        
+    async def save(self, intelligence: HiringIntelligence) -> HiringIntelligence:
+        ...
+
+class HiringIntelligenceProvider(Protocol):
+    """
+    Interface for external hiring landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_hiring_data(self, domain: str) -> HiringIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_hiring_data(self, domain: str) -> HiringIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.executive_intelligence import ExecutiveIntelligence
+
+class ExecutiveIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Executive Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[ExecutiveIntelligence]:
+        ...
+        
+    async def save(self, intelligence: ExecutiveIntelligence) -> ExecutiveIntelligence:
+        ...
+
+class ExecutiveIntelligenceProvider(Protocol):
+    """
+    Interface for external executive landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_executive_data(self, company_id: UUID) -> ExecutiveIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_executive_data(self, company_id: UUID) -> ExecutiveIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.competitive_intelligence import CompetitiveIntelligence
+
+class CompetitiveIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Competitive Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[CompetitiveIntelligence]:
+        ...
+        
+    async def save(self, intelligence: CompetitiveIntelligence) -> CompetitiveIntelligence:
+        ...
+
+class CompetitiveIntelligenceProvider(Protocol):
+    """
+    Interface for external competitive landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_competitive_data(self, domain: str) -> CompetitiveIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_competitive_data(self, domain: str) -> CompetitiveIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.market_intelligence import MarketIntelligence
+
+class MarketIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Market Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[MarketIntelligence]:
+        ...
+        
+    async def save(self, intelligence: MarketIntelligence) -> MarketIntelligence:
+        ...
+
+class MarketIntelligenceProvider(Protocol):
+    """
+    Interface for external market landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_market_data(self, industry: str) -> MarketIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_market_data(self, industry: str) -> MarketIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.industry_intelligence import IndustryIntelligence
+
+class IndustryIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Industry Intelligence records.
+    """
+    async def get_by_industry(self, tenant_id: UUID, industry_name: str) -> Optional[IndustryIntelligence]:
+        ...
+        
+    async def save(self, intelligence: IndustryIntelligence) -> IndustryIntelligence:
+        ...
+
+class IndustryIntelligenceProvider(Protocol):
+    """
+    Interface for external industry landscape retrieval (Layer 3 providers).
+    """
+    async def fetch_industry_data(self, industry_name: str) -> IndustryIntelligence:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_industry_data(self, industry_name: str) -> IndustryIntelligence:
+        ...
+
+from app.modules.enterprise_intelligence.domain.signal_intelligence import SignalIntelligence, NormalizedSignal
+
+class SignalIntelligenceRepository(Protocol):
+    """
+    Interface for persistence of Signal Intelligence records.
+    """
+    async def get_by_company_id(self, tenant_id: UUID, company_id: UUID) -> Optional[SignalIntelligence]:
+        ...
+        
+    async def save(self, intelligence: SignalIntelligence) -> SignalIntelligence:
+        ...
+
+class SignalProvider(Protocol):
+    """
+    Interface for external signal retrieval (Layer 3 providers).
+    """
+    async def fetch_signals(self, domain: str) -> List[NormalizedSignal]:
+        ...
+
+
+---CHUNK---
+
+    async def fetch_signals(self, domain: str) -> List[NormalizedSignal]:
+        ...
+
+from app.modules.enterprise_intelligence.domain.identity_resolution import CanonicalEntity, CompanyIdentity, ContactIdentity
+
+class IdentityResolutionRepository(Protocol):
+    """
+    Interface for persistence of Canonical Identities.
+    """
+    async def get_by_id(self, tenant_id: UUID, entity_id: UUID) -> Optional[CanonicalEntity]:
+        ...
+        
+    async def get_by_primary_identifier(self, tenant_id: UUID, entity_type: str, identifier: str) -> Optional[CanonicalEntity]:
+        ...
+        
+    async def save(self, identity: CanonicalEntity) -> CanonicalEntity:
+        ...
+        
+    async def find_duplicates(self, tenant_id: UUID, entity_type: str) -> List[CanonicalEntity]:
+        ...
+
+class IdentityProvider(Protocol):
+    """
+    Interface for external identity verification (Layer 3 providers).
+    """
+    async def verify_identity(self, entity_type: str, identifier: str) -> Dict[str, Any]:
+        ...
+
+
+---CHUNK---
+
+from typing import Dict, Any
+
+class IdentityProvider(Protocol):
+    """
+    Interface for external identity verification (Layer 3 providers).
+    """
+    async def verify_identity(self, entity_type: str, identifier: str) -> Dict[str, Any]:
+        ...

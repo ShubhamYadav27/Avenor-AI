@@ -1,0 +1,3 @@
+"""
+Copilot Provider Adapters Package
+"""
