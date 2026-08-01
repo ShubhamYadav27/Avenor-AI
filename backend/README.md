@@ -1,4 +1,4 @@
-# Avenor — Predictive Revenue Intelligence Backend
+# Avenor-AI — Predictive Revenue Intelligence Backend
 
 > Know who is about to buy, why, and what to say — before any competitor does.
 
