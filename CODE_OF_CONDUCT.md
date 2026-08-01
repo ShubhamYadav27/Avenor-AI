@@ -10,4 +10,4 @@ Examples of behavior that contributes to a positive environment for our communit
 - Giving and gracefully accepting constructive feedback
 
 ## Enforcement
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at `conduct@avenor.ai`.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at `support@avenorai.in`.
