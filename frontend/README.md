@@ -1,7 +1,7 @@
 # Avenor Dashboard — Customer Intelligence Frontend
 
 Next.js 16 frontend for the Avenor Predictive Revenue Intelligence platform.
-Connects to the Phase 4.1/4.2 FastAPI backend.
+Connects to the FastAPI backend.
 
 ## Tech stack
 - **Next.js 16** App Router · TypeScript · Tailwind CSS v4
@@ -51,7 +51,7 @@ npm run dev
 
 ## Backend connection
 
-The frontend requires the Avenor backend (Phase 4.1 + 4.2) running at `NEXT_PUBLIC_API_URL`.
+The frontend requires the Avenor backend running at `NEXT_PUBLIC_API_URL`.
 
 ```bash
 # Start backend (from avenor/ directory)
