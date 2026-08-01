@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150x150/000000/FFFFFF?text=AVENOR" alt="AVENOR-AI Logo" width="120" />
+  <img src="./logo.png" alt="AVENOR-AI Logo" width="1500"/>
   <h1>AVENOR-AI</h1>
   <h3>AI-Native Predictive Revenue Intelligence Platform</h3>
   <p>Become the world's AI operating system for B2B Revenue Intelligence.</p>
