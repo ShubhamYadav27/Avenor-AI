@@ -1,8 +1,10 @@
-<div align="center">
-  <h1>AVENOR-AI</h1>
-  <h3>AI-Native Predictive Revenue Intelligence Platform</h3>
-  <p>Become the world's AI operating system for B2B Revenue Intelligence.</p>
-</div>
+# Avenor-AI — Predictive Revenue Intelligence Backend-Upgrade
+
+> Know who is about to buy, why, and what to say — before any competitor does.
+> 
+Avenor is an AI-powered B2B revenue intelligence platform. It monitors companies for buying signals, scores them against your ICP, generates Account Intelligence Feeds, and learns from win/loss outcomes to improve predictions over time.
+
+This repository is Final: Intelligence Backend-Upgrade
 
 ---
 
